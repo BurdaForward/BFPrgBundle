@@ -89,3 +89,9 @@ Element example:
     {{ prg_link('http://example.org?q=sample', 'Click me', {element: 'button'})|raw }}
     
     Result: <button class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl">Click me</button>
+
+
+Contact
+-------
+
+For questions and improvments contact us.
