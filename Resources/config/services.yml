@@ -1,0 +1,10 @@
+services:
+    prg_bundle:
+        class: BurdaForward\BFPrgBundle\Service\PrgService
+        arguments: ['@service_container']
+
+    prg_bundle.twig.prg_link:
+        class: BurdaForward\BFPrgBundle\Twig\Extension\Prg
+        tags:
+            - { name: twig.extension }
+        arguments: ['@service_container']

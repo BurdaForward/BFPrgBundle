@@ -1,0 +1,5 @@
+prg_control:
+  path: /prg_resolve/
+  defaults:
+    _controller: PrgBundle:Default:resolve
+  methods: [POST]
