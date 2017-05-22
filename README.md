@@ -1,7 +1,7 @@
-CHIPPrgBundle
+BFPrgBundle
 =============
 
-The CHIPPrgBundle adds support for masking urls based on PRG-Pattern.
+The BFPrgBundle adds support for masking urls based on PRG-Pattern.
 
 For more information about this pattern please take a closer look to the
 following url: [Post/Redirect/Get](https://en.wikipedia.org/wiki/Post/Redirect/Get)
