@@ -12,7 +12,7 @@ following url: [Post/Redirect/Get](https://en.wikipedia.org/wiki/Post/Redirect/G
 Installation & Setup
 --------------------
 
-1. Run ```composer require BurdaForward/BFPrgBundle``` or download teh bundle to you local vendor directory
+1. Run ```composer require burdaforward/bf-prg-bundle``` or download teh bundle to you local vendor directory
 2. Activate this bundle in your ```app/AppKernel.php```
 
     ```php

@@ -1,15 +1,14 @@
 {
-  "name": "BurdaForward/BFPrgBundle",
-  "description": "This bundle helps you to implement the PRG pattern into your application.",
-  "version": "0.0.1",
-  "type": "symfony-bundle",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Thilo Habenreich",
-      "email": "t.habenreich@chip.de"
-    }
-  ],
-  "minimum-stability": "dev",
-  "require": {}
+    "name": "burdaforward/bf-prg-bundle",
+    "description": "This bundle helps you to implement the PRG pattern into your application.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thilo Habenreich",
+            "email": "thabenreich@chip.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
 }
