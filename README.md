@@ -53,7 +53,7 @@ Installation & Setup
     (Best position is before closing body tag.)
   
     ```twig
-    {% include '@Prg/prg_form.html.twig' %}  
+    {% include '@BFPrg/prg_form.html.twig' %}  
     ```
  
 
