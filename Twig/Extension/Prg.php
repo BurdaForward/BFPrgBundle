@@ -69,22 +69,22 @@ class Prg extends \Twig_Extension
    */
   private static function getLinkTemplate(array $linkOptions)
   {
-    $link_template = '@Prg/prg_link_span.html.twig';
+    $link_template = '@BFPrg/prg_link_span.html.twig';
 
     if (array_key_exists('element', $linkOptions)) {
       $element_value = $linkOptions['element'];
 
       switch ($element_value) {
         case 'button':
-          $link_template = '@Prg/prg_link_button.html.twig';
+          $link_template = '@BFPrg/prg_link_button.html.twig';
           break;
 
         case 'div':
-          $link_template = '@Prg/prg_link_div.html.twig';
+          $link_template = '@BFPrg/prg_link_div.html.twig';
           break;
 
         default:
-          $link_template = '@Prg/prg_link_span.html.twig';
+          $link_template = '@BFPrg/prg_link_span.html.twig';
           break;
       }
     }
