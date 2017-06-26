@@ -65,6 +65,10 @@ class DefaultController extends Controller
   {
     $decoded_post_data = PrgService::decodeData($prgdata);
 
+    if ($this->isExternalLocation($decoded_post_data)) {
+      return $decoded_post_data;
+    }
+
     if ($this->hasApplicationPath($decoded_post_data)) {
       return $decoded_post_data;
     }
@@ -76,6 +80,15 @@ class DefaultController extends Controller
     }
 
     return $this->baseLocation;
+  }
+
+  /**
+   * @param $prgdata
+   * @return bool
+   */
+  private function isExternalLocation($prgdata)
+  {
+    return (substr_count($prgdata, $this->baseLocation) === 0);
   }
 
   /**
