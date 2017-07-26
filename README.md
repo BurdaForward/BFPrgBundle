@@ -67,28 +67,39 @@ The bundle provides a twig function you can call in your templates.
         url: Destination URL including GET parameter
         title: Label  of the masked link. e.g. <a href="#">TITLE</a>
         options: This is an array the supports the following options.
-          class: you can set the css class of the rendered element
-          element: the default is "span" but if you want to render a "button" or "div" you can set it with this option
+            class: you can set the css class of the rendered element
+            element: the default is "span" but if you want to render a "button" or "div" you can set it with this option
+            target: you can define if the link should open in the same window (default value) or in a new one 
+                    valid values are
+                        - _self (same frame)
+                        - _top (same window
+                        - _blank (new window)
 
 
 Basic example:
 
     {{ prg_link('http://example.org?q=sample', 'Click me')|raw }}
     
-    Result: <span class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl">Click me</span>
+    Result: <span class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl"  data-target="_self">Click me</span>
     
     
 Stylesheet example:
     
     {{ prg_link('http://example.org?q=sample', 'Click me', {class: 'my-link'})|raw }}
     
-    Result: <span class="prg-link my-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl">Click me</span>
+    Result: <span class="prg-link my-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl"  data-target="_self">Click me</span>
+    
+Target example    
+
+    {{ prg_link('http://example.org?q=sample', 'Click me', {target: '_blank'})|raw }}
+
+    Result: <span class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl" data-target="_blank">Click me</span>
     
 Element example:
     
     {{ prg_link('http://example.org?q=sample', 'Click me', {element: 'button'})|raw }}
     
-    Result: <button class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl">Click me</button>
+    Result: <button class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl" data-target="_self">Click me</button>
 
 
 Contact
