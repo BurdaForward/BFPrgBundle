@@ -6,6 +6,7 @@ window.onload = function () {
     var submitForm = function (e) {
         e.preventDefault();
         redirectInput.value = this.getAttribute('data-submit');
+        redirectForm.setAttribute('target', this.getAttribute('data-target'));
         redirectForm.submit();
     };
 

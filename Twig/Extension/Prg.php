@@ -57,6 +57,7 @@ class Prg extends \Twig_Extension
     $link_template_parameters = [
       'prg_link_class' => $this->readClassOption($linkOptions),
       'prg_link_data'  => PrgService::encodeData($submitData),
+      'prg_link_target' => $this->readTargetOption($linkOptions),
       'prg_link_title' => $linkTitle,
     ];
 
@@ -109,4 +110,20 @@ class Prg extends \Twig_Extension
     return '';
   }
 
+  /**
+   * @param array $linkOptions
+   * @return mixed|string
+   */
+  private function readTargetOption(array $linkOptions)
+  {
+    if (array_key_exists('target', $linkOptions)) {
+      $target_value = $linkOptions['target'];
+
+      if (!empty($target_value) && is_string($target_value) && in_array($target_value, ['_self', '_blank', '_top'])) {
+        return $target_value;
+      }
+    }
+
+    return '_self';
+  }
 }
