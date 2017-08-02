@@ -68,7 +68,7 @@ The bundle provides a twig function you can call in your templates.
         title: Label  of the masked link. e.g. <a href="#">TITLE</a>
         options: This is an array the supports the following options.
             class: you can set the css class of the rendered element
-            element: the default is "span" but if you want to render a "button" or "div" you can set it with this option
+            element: the default is "span" but if you want to render a "button", "div" or "a" you can set it with this option
             target: you can define if the link should open in the same window (default value) or in a new one 
                     valid values are
                         - _self (same frame)
@@ -105,4 +105,4 @@ Element example:
 Contact
 -------
 
-For questions and improvments contact us.
+For questions and improvements contact us.
