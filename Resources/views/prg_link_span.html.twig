@@ -1,1 +1,5 @@
-<span class="prg-link {{ prg_link_class }}" data-submit="{{ prg_link_data|raw }}" data-target="{{ prg_link_target|raw }}">{{ prg_link_title|raw }}</span>
+{% if not only_open_tag %}
+    <span class="prg-link {{ prg_link_class }}" data-submit="{{ prg_link_data|raw }}" data-target="{{ prg_link_target|raw }}">{{ prg_link_title|raw }}</span>
+{% else %}
+    <span class="prg-link {{ prg_link_class }}" data-submit="{{ prg_link_data|raw }}" data-target="{{ prg_link_target|raw }}">
+{% endif %}
