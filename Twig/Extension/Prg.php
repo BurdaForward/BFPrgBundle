@@ -34,6 +34,7 @@ class Prg extends \Twig_Extension
   {
     return [
       new \Twig_SimpleFunction('prg_link', [$this, 'generateLink']),
+      new \Twig_SimpleFunction('prg_encode', [$this, 'encodeUrl']),
     ];
   }
 
@@ -50,7 +51,9 @@ class Prg extends \Twig_Extension
       throw new \UnexpectedValueException('You have to set data to redirect to.');
     }
 
-    if (empty($linkTitle)) {
+    $boolOnlyOpenTag = $this->readOpenTagOnlyOption($linkOptions);
+
+    if (empty($linkTitle) && !$boolOnlyOpenTag) {
       throw new \UnexpectedValueException('You have to set a link title.');
     }
 
@@ -59,9 +62,24 @@ class Prg extends \Twig_Extension
       'prg_link_data'  => PrgService::encodeData($submitData),
       'prg_link_target' => $this->readTargetOption($linkOptions),
       'prg_link_title' => $linkTitle,
+      'only_open_tag' => $boolOnlyOpenTag,
     ];
 
     return $this->twigEnvironment->render(self::getLinkTemplate($linkOptions), $link_template_parameters);
+  }
+
+  /**
+   * @param $inputData
+   * @return string
+   * @throws \Exception
+   */
+  public function encodeUrl($inputData)
+  {
+    if (empty($inputData)) {
+      throw new \UnexpectedValueException('You have to set data to encode.');
+    }
+
+    return PrgService::encodeData($inputData);
   }
 
   /**
@@ -129,5 +147,22 @@ class Prg extends \Twig_Extension
     }
 
     return '_self';
+  }
+
+  /**
+   * @param array $linkOptions
+   * @return bool
+   */
+  protected function readOpenTagOnlyOption(array $linkOptions)
+  {
+    if (array_key_exists('only_open_tag', $linkOptions)) {
+      $open_tag_value = $linkOptions['only_open_tag'];
+
+      if (!empty($open_tag_value) && is_bool($open_tag_value)) {
+        return $open_tag_value;
+      }
+    }
+
+    return false;
   }
 }

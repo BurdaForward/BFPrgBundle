@@ -74,6 +74,8 @@ The bundle provides a twig function you can call in your templates.
                         - _self (same frame)
                         - _top (same window
                         - _blank (new window)
+            only_open_tag: has to be set true or false - the result will only return the opening tag of a prg link 
+                           ATTENTION: You have to close the tag by yourself.
 
 
 Basic example:
@@ -100,6 +102,12 @@ Element example:
     {{ prg_link('http://example.org?q=sample', 'Click me', {element: 'button'})|raw }}
     
     Result: <button class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl" data-target="_self">Click me</button>
+    
+Only Open Tag example:
+    
+    {{ prg_link('http://example.org?q=sample', 'Title will be ignored', {only_open_tag: true)|raw }}
+    
+    Result: <span class="prg-link" data-submit="aHR0cDovL2V4YW1wbGUub3JnP3E9c2FtcGxl" data-target="_self">
 
 
 Contact
