@@ -84,6 +84,10 @@ class Prg extends \Twig_Extension
           $link_template = '@BFPrg/prg_link_div.html.twig';
           break;
 
+        case 'a':
+          $link_template = '@BFPrg/prg_link_a.html.twig';
+          break;
+
         default:
           $link_template = '@BFPrg/prg_link_span.html.twig';
           break;
