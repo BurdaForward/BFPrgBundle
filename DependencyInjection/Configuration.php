@@ -15,9 +15,9 @@ class Configuration implements ConfigurationInterface
    * {@inheritdoc}
    * @throws \Exception
    */
-  public function getConfigTreeBuilder()
+  public function getConfigTreeBuilder(): TreeBuilder
   {
-    $tree_builder = new TreeBuilder();
+    $tree_builder = new TreeBuilder('prg');
     $root_node = $tree_builder->root('prg');
 
     return $tree_builder;

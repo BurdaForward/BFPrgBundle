@@ -2,7 +2,7 @@
     "name": "burdaforward/bf-prg-bundle",
     "description": "This bundle helps you to implement the PRG pattern into your application.",
     "type": "symfony-bundle",
-    "version": "1.0.7",
+    "version": "1.1.0",
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,12 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "php": "^7.2",
+        "symfony/framework-bundle": "^4.4 || ^5.0",
+        "twig/twig": "^1.28 || ^2.0",
+        "symfony/yaml": "^5.0"
+    },
     "autoload": {
         "psr-4": {
             "BurdaForward\\BFPrgBundle\\": ""
