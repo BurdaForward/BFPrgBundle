@@ -13,7 +13,7 @@ class PrgService {
    * @return string
    * @throws \Exception
    */
-  public static function encodeData($data)
+  public static function encodeData($data): string
   {
     if (!is_string($data)) {
       throw new \UnexpectedValueException('Given argument value have to be a string.');
@@ -27,7 +27,8 @@ class PrgService {
    * @return string
    * @throws \Exception
    */
-  public static function decodeData($data) {
+  public static function decodeData($data): string
+  {
 
     if (!is_string($data)) {
       throw new \UnexpectedValueException('Given argument value have to be a string.');
