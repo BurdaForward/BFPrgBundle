@@ -1,5 +1,5 @@
 prg_control:
   path: /prg_resolve/
   defaults:
-    _controller: BFPrgBundle:Default:resolve
+    _controller: 'BurdaForward\BFPrgBundle\Controller\DefaultController::resolveAction'
   methods: [POST]
