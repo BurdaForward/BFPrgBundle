@@ -4,6 +4,7 @@ namespace BurdaForward\BFPrgBundle\Twig\Extension;
 
 use BurdaForward\BFPrgBundle\Service\PrgService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -15,7 +16,7 @@ use Twig\TwigFunction;
 class Prg extends AbstractExtension
 {
 
-    /** @var  \Twig_Environment $twigEnvironment */
+    /** @var Environment $twigEnvironment */
     private $twigEnvironment;
 
     /**
