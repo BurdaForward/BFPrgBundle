@@ -3,7 +3,6 @@
 namespace BurdaForward\BFPrgBundle\Twig\Extension;
 
 use BurdaForward\BFPrgBundle\Service\PrgService;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -22,12 +21,11 @@ class Prg extends AbstractExtension
     /**
      * Prg constructor.
      *
-     * @param ContainerInterface $container
-     * @throws \Exception
+     * @param Environment $twigEnvironment
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(Environment $twigEnvironment)
     {
-        $this->twigEnvironment = $container->get('twig');
+        $this->twigEnvironment = $twigEnvironment;
     }
 
     /**
