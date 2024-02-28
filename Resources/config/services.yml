@@ -8,3 +8,9 @@ services:
         tags:
             - { name: twig.extension }
         arguments: ['@service_container']
+
+    BurdaForward\BFPrgBundle\Controller\DefaultController:
+        autowire: true
+        autoconfigure: true
+        arguments: ['@router']
+        tags: [controller.service_arguments]
