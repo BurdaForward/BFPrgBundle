@@ -21,20 +21,13 @@ class DefaultController extends AbstractController
     /** @var Router $router */
     private $router;
 
-    /**
-     * @param \Psr\Container\ContainerInterface $container
-     * @return \Psr\Container\ContainerInterface|null
-     */
-    public function setContainer(\Psr\Container\ContainerInterface $container): ?\Psr\Container\ContainerInterface
-    {
-        $previous = parent::setContainer($container);
-
-        $this->router = $this->container->get('router');
+    public function __construct(
+        Router $router
+    ) {
+        $this->router = $router;
 
         $domain = $this->router->getContext()->getBaseUrl();
         $this->baseLocation = sprintf('//%s/', $domain);
-
-        return $previous;
     }
 
     /**
