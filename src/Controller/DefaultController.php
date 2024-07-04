@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BurdaForward\BFPrgBundle\Controller;
 
 use BurdaForward\BFPrgBundle\Service\PrgService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class DefaultController
@@ -14,18 +16,11 @@ use Symfony\Component\Routing\Router;
  */
 class DefaultController extends AbstractController
 {
-
-    /** @var string $baseLocation */
-    private $baseLocation;
-
-    /** @var Router $router */
-    private $router;
+    private string $baseLocation;
 
     public function __construct(
-        Router $router
+        private readonly RouterInterface $router
     ) {
-        $this->router = $router;
-
         $domain = $this->router->getContext()->getBaseUrl();
         $this->baseLocation = sprintf('//%s/', $domain);
     }
@@ -38,68 +33,68 @@ class DefaultController extends AbstractController
     public function resolveAction(Request $request): RedirectResponse
     {
         $post_data = $request->request->all();
-        $prgdata = array_key_exists('prgdata', $post_data) ? $post_data['prgdata'] : '';
+        $prgData = $post_data['prgdata'] ?? '';
 
         $location = $this->baseLocation;
 
-        if (!empty($prgdata)) {
+        if (!empty($prgData)) {
             $referer = $request->headers->get('referer');
-            $location = $this->buildLocation($prgdata, $referer);
+            $location = $this->buildLocation($prgData, $referer);
         }
 
         return new RedirectResponse($location, 302);
     }
 
     /**
-     * @param string $prgdata
+     * @param string $prgData
      * @param string $referer
      * @return string
      * @throws \Exception
      */
-    private function buildLocation($prgdata, $referer): string
+    private function buildLocation(string $prgData, string $referer): string
     {
-        $decoded_post_data = PrgService::decodeData($prgdata);
+        $decodedPostData = PrgService::decodeData($prgData);
 
-        if ($this->isExternalLocation($decoded_post_data)) {
-            return $decoded_post_data;
+        if ($this->isExternalLocation($decodedPostData)) {
+            return $decodedPostData;
         }
 
-        if ($this->hasApplicationPath($decoded_post_data)) {
-            return $decoded_post_data;
+        if ($this->hasApplicationPath($decodedPostData)) {
+            return $decodedPostData;
         }
 
-        $cleaned_referer = str_replace(['http:', 'https:'], '', $referer);
+        $cleanedReferer = str_replace(['http:', 'https:'], '', $referer);
 
-        if (strpos($cleaned_referer, $this->baseLocation) !== FALSE) {
-            return $cleaned_referer;
+        if (str_contains($cleanedReferer, $this->baseLocation)) {
+            return $cleanedReferer;
         }
 
         return $this->baseLocation;
     }
 
     /**
-     * @param $prgdata
+     * @param string $prgData
      * @return bool
      */
-    private function isExternalLocation($prgdata): bool
+    private function isExternalLocation(string $prgData): bool
     {
-        return (substr_count($prgdata, $this->baseLocation) === 0);
+        return !str_contains($prgData, $this->baseLocation);
     }
 
     /**
-     * @param $decoded_post_data
-     * @return array|bool
-     * @throws \Exception
+     * @param string $decodedPostData
+     * @return bool
      */
-    private function hasApplicationPath($decoded_post_data)
+    private function hasApplicationPath(string $decodedPostData): bool
     {
-        $url_data = parse_url($decoded_post_data);
-        $url_path = array_key_exists('path', $url_data) ? $url_data['path'] : '';
+        $urlData = parse_url($decodedPostData);
+        $urlPath = $urlData['path'] ?? '';
 
         try {
-            $this->router->match($url_path);
+            $this->router->match($urlPath);
+
             return true;
-        } catch (\Exception $exception) {
+        } catch (\Exception) {
             return false;
         }
     }

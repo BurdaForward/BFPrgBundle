@@ -1,40 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BurdaForward\BFPrgBundle\Service;
 
 /**
  * Class PrgService
  * @package BurdaForward\BFPrgBundle\Service
  */
-class PrgService {
-
-  /**
-   * @param $data
-   * @return string
-   * @throws \Exception
-   */
-  public static function encodeData($data): string
-  {
-    if (!is_string($data)) {
-      throw new \UnexpectedValueException('Given argument value have to be a string.');
+class PrgService
+{
+    /**
+     * @param string $data
+     * @return string
+     */
+    public static function encodeData(string $data): string
+    {
+        return base64_encode($data);
     }
 
-    return base64_encode($data);
-  }
-
-  /**
-   * @param $data
-   * @return string
-   * @throws \Exception
-   */
-  public static function decodeData($data): string
-  {
-
-    if (!is_string($data)) {
-      throw new \UnexpectedValueException('Given argument value have to be a string.');
+    /**
+     * @param string $data
+     * @return string
+     */
+    public static function decodeData(string $data): string
+    {
+        return base64_decode($data, true);
     }
-
-    return base64_decode($data, TRUE);
-  }
-
 }
