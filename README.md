@@ -13,12 +13,13 @@ Installation & Setup
 --------------------
 
 1. Run ```composer require burdaforward/bf-prg-bundle``` or download teh bundle to you local vendor directory
-2. Activate this bundle in your ```app/AppKernel.php```
-
+2. Activate this bundle
+   - It should be activated automatically if you have Symfony Flex installed
+   - Manually via ```src/Kernel.php``` or ```config/bundles.php```
     ```php
     ...
     
-    class AppKernel extends Kernel
+    class Kernel extends BaseKernel
     {
         ... 
         
@@ -39,16 +40,16 @@ Installation & Setup
     }
     ```
 
-3. Add the bundle to your ```app/config/routing.yml```
+3. Add the bundle to your routing configuration like ```config/routes.yaml```
  
     ```yaml
       prg:
          resource: "@BFPrgBundle/Resources/config/routing.yml"
     ```
     
-    This rounting.yml enables a required route ```/prg_resolve```.
+    This routing.yml enables a required route ```/prg_resolve```.
 
-4. In the last step you have incldue the basic template of that bundle into your templates.
+4. In the last step you need to include the basic template of that bundle into your templates.
   
     (Best position is before closing body tag.)
   
