@@ -2,7 +2,7 @@
     "name": "burdaforward/bf-prg-bundle",
     "description": "This bundle helps you to implement the PRG pattern into your application.",
     "type": "symfony-bundle",
-    "version": "1.2.2",
+    "version": "2.0.0",
     "license": "MIT",
     "authors": [
         {
